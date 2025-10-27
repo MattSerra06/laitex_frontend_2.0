@@ -1,59 +1,157 @@
-# LaitexEditor
+# LaTeX Editor - Frontend 2.0
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 20.3.7.
+A modern, feature-rich LaTeX editor built with Angular 20 and Angular Material, inspired by Overleaf.
 
-## Development server
+## Features
 
-To start a local development server, run:
+### 📝 Editor Layout
+- **Three-panel layout**: File tree, LaTeX editor, and PDF preview
+- **Collapsible file tree**: Overleaf-style project structure navigation
+- **Monaco Editor integration**: Professional code editing experience with syntax highlighting
+- **PDF Preview**: Live preview panel for compiled documents
 
+### 🎨 Theming
+- **Light & Dark themes**: Seamless theme switching
+- **Material Design 3**: Modern, clean UI with pastel color palette
+- **Minimalist style**: Focused, distraction-free editing environment
+
+### 💬 AI Assistant
+- **Floating chat bubble**: Accessible from anywhere in the editor
+- **Draggable window**: Position the chat wherever you need it
+- **Fullscreen mode**: Expand chat for detailed conversations
+- **Minimize/Maximize**: Control your workspace layout
+
+### 🛠️ Technical Stack
+- **Angular 20**: Latest Angular framework
+- **Angular Material**: Material Design components
+- **Monaco Editor**: VS Code's editor for web
+- **SCSS**: Advanced styling capabilities
+- **TypeScript**: Type-safe development
+
+## Getting Started
+
+### Prerequisites
+- Node.js 20.x or higher
+- npm 10.x or higher
+
+### Installation
+
+1. Clone the repository:
 ```bash
+git clone https://github.com/MattSerra06/laitex_frontend_2.0.git
+cd laitex_frontend_2.0
+```
+
+2. Install dependencies:
+```bash
+npm install
+```
+
+3. Start the development server:
+```bash
+npm start
+# or
 ng serve
 ```
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+4. Open your browser and navigate to `http://localhost:4200/`
 
-## Code scaffolding
+## Project Structure
 
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
-
-```bash
-ng generate component component-name
+```
+src/
+├── app/
+│   ├── components/
+│   │   ├── editor-layout/      # Main layout container
+│   │   ├── file-tree/          # Project file navigation
+│   │   ├── latex-editor/       # Monaco-based LaTeX editor
+│   │   ├── pdf-preview/        # PDF preview panel
+│   │   └── chat-bubble/        # AI assistant chat
+│   ├── services/
+│   │   ├── latex-document.ts   # Document state management
+│   │   └── theme.ts            # Theme switching logic
+│   └── app-module.ts
+├── styles.scss                 # Global styles and theming
+└── index.html
 ```
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
+## Available Scripts
 
-```bash
-ng generate --help
-```
+- `npm start` - Start development server
+- `npm run build` - Build for production
+- `npm test` - Run unit tests
+- `npm run watch` - Build in watch mode
 
-## Building
+## Key Features Documentation
 
-To build the project run:
+### File Tree
+- Browse project files with an intuitive tree structure
+- Click files to open them in the editor
+- Icons differentiate file types (.tex, .bib, .pdf)
+- Collapsible sidebar for more editor space
 
-```bash
-ng build
-```
+### LaTeX Editor
+- Full-featured Monaco Editor integration
+- Syntax highlighting for LaTeX
+- Line numbers and minimap
+- Auto-save functionality
+- Responsive to theme changes
 
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
+### PDF Preview
+- Real-time preview of compiled documents
+- Placeholder for backend integration
+- Compile button for manual updates
+- Responsive layout
 
-## Running unit tests
+### Chat Assistant
+- Floating bubble in bottom-right corner
+- Click to open/close chat window
+- Drag to reposition anywhere on screen
+- Fullscreen mode for extended conversations
+- Message history with timestamps
 
-To execute unit tests with the [Karma](https://karma-runner.github.io) test runner, use the following command:
+### Theme Switching
+- Toggle between light and dark themes
+- Persistent preference (saved in localStorage)
+- Smooth transitions
+- Consistent across all components
 
-```bash
-ng test
-```
+## Architecture
 
-## Running end-to-end tests
+The application follows Angular best practices:
 
-For end-to-end (e2e) testing, run:
+- **Component-based architecture**: Modular, reusable components
+- **Service layer**: Centralized state management
+- **Reactive programming**: RxJS observables for data flow
+- **Material Design**: Consistent UI/UX patterns
+- **SCSS organization**: Scoped styles with global theming
 
-```bash
-ng e2e
-```
+## Browser Support
 
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
+- Chrome/Edge (latest)
+- Firefox (latest)
+- Safari (latest)
 
-## Additional Resources
+## Future Enhancements
 
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+- Backend integration for LaTeX compilation
+- Real-time collaboration features
+- Advanced AI assistance for LaTeX syntax
+- Git integration
+- Template library
+- Export options (PDF, ZIP)
+
+## Contributing
+
+This project is part of the LaTeX Editor 2.0 initiative. For contributions, please follow the Angular style guide and Material Design principles.
+
+## License
+
+[Add your license here]
+
+## Acknowledgments
+
+- Angular team for the amazing framework
+- Material Design for the design system
+- Monaco Editor for the code editing experience
+- Overleaf for the inspiration
