@@ -1,0 +1,52 @@
+<div class="editor-container">
+  <!-- Top toolbar -->
+  <mat-toolbar class="top-toolbar">
+    <button mat-icon-button (click)="toggleFileTree()" matTooltip="Toggle file tree">
+      <mat-icon>menu</mat-icon>
+    </button>
+    <span class="toolbar-title">LaTeX Editor</span>
+    <span class="spacer"></span>
+    <button mat-icon-button matTooltip="Compile LaTeX">
+      <mat-icon>play_arrow</mat-icon>
+    </button>
+    <button mat-icon-button matTooltip="Download PDF">
+      <mat-icon>download</mat-icon>
+    </button>
+    <button mat-icon-button matTooltip="Export">
+      <mat-icon>file_upload</mat-icon>
+    </button>
+    <button mat-icon-button (click)="toggleTheme()" [matTooltip]="(themeService.isDarkMode$ | async) ? 'Switch to light mode' : 'Switch to dark mode'">
+      <mat-icon>{{ (themeService.isDarkMode$ | async) ? 'light_mode' : 'dark_mode' }}</mat-icon>
+    </button>
+  </mat-toolbar>
+
+  <!-- Main content area with sidenav -->
+  <mat-sidenav-container class="main-content">
+    <!-- File tree sidebar -->
+    <mat-sidenav 
+      #sidenav 
+      mode="side" 
+      [opened]="isFileTreeOpen"
+      class="file-tree-sidenav">
+      <app-file-tree></app-file-tree>
+    </mat-sidenav>
+
+    <!-- Editor and preview panels -->
+    <mat-sidenav-content class="editor-content">
+      <div class="editor-panels">
+        <div class="latex-editor-panel">
+          <app-latex-editor></app-latex-editor>
+        </div>
+        <div class="pdf-preview-panel">
+          <app-pdf-preview></app-pdf-preview>
+        </div>
+      </div>
+    </mat-sidenav-content>
+  </mat-sidenav-container>
+
+  <!-- Chat bubble -->
+  <app-chat-bubble 
+    [isOpen]="isChatOpen"
+    (toggleChat)="toggleChat()">
+  </app-chat-bubble>
+</div>

@@ -1,0 +1,73 @@
+<!-- Chat bubble button (shown when chat is closed) -->
+<div class="chat-bubble-button" *ngIf="!isOpen" (click)="onToggleChat()" matTooltip="Open chat assistant">
+  <mat-icon>chat</mat-icon>
+</div>
+
+<!-- Chat window (shown when chat is open) -->
+<div 
+  class="chat-window" 
+  *ngIf="isOpen"
+  [class.fullscreen]="isFullscreen"
+  [class.minimized]="isMinimized"
+  cdkDrag
+  [cdkDragDisabled]="isFullscreen">
+  
+  <!-- Chat header -->
+  <div class="chat-header" cdkDragHandle>
+    <div class="header-content">
+      <mat-icon class="chat-icon">smart_toy</mat-icon>
+      <span class="chat-title">LaTeX Assistant</span>
+    </div>
+    <div class="header-actions">
+      <button mat-icon-button (click)="minimize()" matTooltip="Minimize" *ngIf="!isMinimized">
+        <mat-icon>minimize</mat-icon>
+      </button>
+      <button mat-icon-button (click)="toggleFullscreen()" [matTooltip]="isFullscreen ? 'Exit fullscreen' : 'Fullscreen'">
+        <mat-icon>{{ isFullscreen ? 'fullscreen_exit' : 'fullscreen' }}</mat-icon>
+      </button>
+      <button mat-icon-button (click)="close()" matTooltip="Close">
+        <mat-icon>close</mat-icon>
+      </button>
+    </div>
+  </div>
+
+  <!-- Chat messages -->
+  <div class="chat-messages" *ngIf="!isMinimized">
+    <div 
+      *ngFor="let message of messages" 
+      class="message"
+      [class.user-message]="message.isUser"
+      [class.bot-message]="!message.isUser">
+      <div class="message-content">
+        <div class="message-avatar">
+          <mat-icon>{{ message.isUser ? 'person' : 'smart_toy' }}</mat-icon>
+        </div>
+        <div class="message-text">
+          <p>{{ message.text }}</p>
+          <span class="message-time">{{ message.timestamp | date:'short' }}</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Chat input -->
+  <div class="chat-input" *ngIf="!isMinimized">
+    <mat-form-field appearance="outline" class="input-field">
+      <mat-label>Type your message...</mat-label>
+      <textarea 
+        matInput 
+        [(ngModel)]="currentMessage"
+        (keypress)="onKeyPress($event)"
+        rows="2"
+        cdkTextareaAutosize></textarea>
+    </mat-form-field>
+    <button 
+      mat-fab 
+      color="primary" 
+      (click)="sendMessage()"
+      [disabled]="!currentMessage.trim()"
+      matTooltip="Send message">
+      <mat-icon>send</mat-icon>
+    </button>
+  </div>
+</div>

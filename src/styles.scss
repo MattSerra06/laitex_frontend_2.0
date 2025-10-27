@@ -1,0 +1,89 @@
+
+// Include theming for Angular Material with `mat.theme()`.
+@use '@angular/material' as mat;
+
+html {
+  @include mat.theme((
+    color: (
+      primary: mat.$azure-palette,
+      tertiary: mat.$blue-palette,
+    ),
+    typography: Roboto,
+    density: 0,
+  ));
+}
+
+body {
+  // Default the application to a light color theme
+  color-scheme: light;
+
+  // Set a default background, font and text colors for the application
+  background-color: var(--mat-sys-surface);
+  color: var(--mat-sys-on-surface);
+  font: var(--mat-sys-body-medium);
+
+  // Reset the user agent margin
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+  height: 100%;
+  overflow: hidden;
+
+  // Dark theme styling
+  &[data-theme="dark"] {
+    color-scheme: dark;
+  }
+}
+
+html, body {
+  height: 100%;
+}
+
+// Global utility classes
+.mat-mdc-form-field {
+  width: 100%;
+}
+
+// Custom scrollbar styling for the entire app
+* {
+  scrollbar-width: thin;
+  scrollbar-color: var(--mat-sys-outline-variant) transparent;
+}
+
+*::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+*::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+*::-webkit-scrollbar-thumb {
+  background: var(--mat-sys-outline-variant);
+  border-radius: 4px;
+
+  &:hover {
+    background: var(--mat-sys-outline);
+  }
+}
+
+// Material icon sizing fix
+mat-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+// Ensure proper CDK drag preview styling
+.cdk-drag-preview {
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+  opacity: 0.9;
+}
+
+.cdk-drag-placeholder {
+  opacity: 0.5;
+}
+
+.cdk-drag-animating {
+  transition: transform 250ms cubic-bezier(0, 0, 0.2, 1);
+}
