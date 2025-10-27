@@ -1,0 +1,69 @@
+.file-tree-container {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  background: var(--mat-sys-surface-container-low);
+}
+
+.file-tree-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px;
+  border-bottom: 1px solid var(--mat-sys-outline-variant);
+
+  .header-title {
+    margin: 0;
+    font-size: 1rem;
+    font-weight: 500;
+    color: var(--mat-sys-on-surface);
+  }
+}
+
+.file-list {
+  flex: 1;
+  overflow-y: auto;
+  padding: 8px 0;
+
+  .file-item {
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+    border-radius: 4px;
+    margin: 2px 8px;
+
+    &:hover {
+      background-color: var(--mat-sys-surface-container-highest);
+    }
+
+    &.selected {
+      background-color: var(--mat-sys-primary-container);
+      color: var(--mat-sys-on-primary-container);
+
+      mat-icon {
+        color: var(--mat-sys-on-primary-container);
+      }
+    }
+
+    mat-icon {
+      color: var(--mat-sys-on-surface-variant);
+    }
+  }
+}
+
+// Custom scrollbar styling
+.file-list::-webkit-scrollbar {
+  width: 8px;
+}
+
+.file-list::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.file-list::-webkit-scrollbar-thumb {
+  background: var(--mat-sys-outline-variant);
+  border-radius: 4px;
+
+  &:hover {
+    background: var(--mat-sys-outline);
+  }
+}

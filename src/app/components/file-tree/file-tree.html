@@ -1,0 +1,19 @@
+<div class="file-tree-container">
+  <div class="file-tree-header">
+    <h3 class="header-title">Project Files</h3>
+    <button mat-icon-button matTooltip="Add file">
+      <mat-icon>add</mat-icon>
+    </button>
+  </div>
+
+  <mat-nav-list class="file-list">
+    <mat-list-item 
+      *ngFor="let file of fileTree"
+      (click)="onFileSelect(file)"
+      [class.selected]="isSelected(file)"
+      class="file-item">
+      <mat-icon matListItemIcon>{{ getIcon(file) }}</mat-icon>
+      <span matListItemTitle>{{ file.name }}</span>
+    </mat-list-item>
+  </mat-nav-list>
+</div>

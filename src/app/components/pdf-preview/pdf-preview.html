@@ -1,0 +1,27 @@
+<div class="pdf-preview-container">
+  <div class="preview-header">
+    <h3 class="header-title">PDF Preview</h3>
+    <button mat-icon-button (click)="compile()" matTooltip="Compile document" [disabled]="isCompiling">
+      <mat-icon>{{ isCompiling ? 'sync' : 'refresh' }}</mat-icon>
+    </button>
+  </div>
+
+  <div class="preview-content">
+    <div *ngIf="isCompiling" class="status-message compiling">
+      <mat-icon>sync</mat-icon>
+      <p>Compiling LaTeX document...</p>
+    </div>
+
+    <div *ngIf="hasError" class="status-message error">
+      <mat-icon>error</mat-icon>
+      <p>{{ errorMessage }}</p>
+    </div>
+
+    <div *ngIf="!isCompiling && !hasError" class="preview-placeholder">
+      <mat-icon class="placeholder-icon">picture_as_pdf</mat-icon>
+      <h3>PDF Preview</h3>
+      <p>The compiled LaTeX document will appear here.</p>
+      <p class="note">Note: LaTeX compilation requires a backend service.</p>
+    </div>
+  </div>
+</div>
